@@ -1,0 +1,368 @@
+<meta charset="UTF-8">
+<title>Adthena Content Radar: Monday 27 July 2026</title>
+<style>
+  :root{
+    --navy:#0D1B2A;--navy-2:#0a1521;--blue:#236298;--lime:#CCFF33;--slate:#25323F;--slate-2:#1c2732;
+    --white:#fff;--ink:rgba(255,255,255,0.86);--muted:rgba(255,255,255,0.56);--faint:rgba(255,255,255,0.36);
+    --line:rgba(255,255,255,0.10);--line-2:rgba(255,255,255,0.16);
+    --font:"Montserrat","Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--navy);color:var(--ink);font-family:var(--font);line-height:1.6;
+    -webkit-font-smoothing:antialiased;letter-spacing:-0.003em;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+  a{color:var(--lime);text-decoration:none;}
+  .bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+  .bg svg{position:absolute;top:-240px;right:-220px;opacity:.85;}
+  header,main{position:relative;z-index:1;}
+  header{padding:30px 0 22px;border-bottom:1px solid var(--line);}
+  .top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:30px;}
+  .logo{height:26px;}
+  .top .meta{font-size:12px;color:var(--muted);text-align:right;}
+  .eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);margin:0 0 12px;}
+  .process{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:0 0 16px;}
+  .process .step{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted);}
+  .process .step b{color:var(--lime);font-weight:700;text-transform:uppercase;font-size:10.5px;letter-spacing:.1em;}
+  .process .arrow{color:var(--faint);font-size:13px;}
+  h1{font-size:clamp(30px,5vw,44px);font-weight:600;letter-spacing:-0.02em;margin:0 0 14px;color:var(--white);text-wrap:balance;}
+  .summary{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13.5px;color:var(--muted);margin-top:6px;}
+  .summary b{color:var(--ink);font-weight:600;}
+  main{padding:26px 0 10px;display:grid;gap:16px;}
+  .section-title{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:38px 0 12px;}
+  .section-title span{font-weight:400;text-transform:none;letter-spacing:0;color:var(--faint);}
+  .pulse-banner{display:flex;align-items:flex-start;gap:8px;background:rgba(232,163,61,.08);border:1px solid rgba(232,163,61,.35);
+    border-radius:10px;padding:11px 16px;font-size:12.5px;color:#e8c07d;margin:0 0 16px;}
+  .pulse-banner b{color:#f0c987;}
+  .pulse-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;}
+  .pulse-card{border:1px solid var(--line);border-radius:12px;background:var(--slate);padding:16px 18px;}
+  .pulse-card.signal{border-color:rgba(232,163,61,.4);background:rgba(232,163,61,.05);}
+  .pulse-card h3{font-size:12.5px;font-weight:700;color:var(--white);margin:0 0 9px;text-transform:uppercase;letter-spacing:.06em;}
+  .pulse-card.signal h3{color:#f0c987;}
+  .pulse-card ul{margin:0;padding-left:16px;}
+  .pulse-card li{font-size:12.5px;color:var(--muted);margin:0 0 7px;line-height:1.5;}
+  .pulse-card li:last-child{margin-bottom:0;}
+  .pulse-card li b{color:var(--ink);font-weight:600;}
+  .idea{border:1px solid var(--line);border-radius:14px;background:var(--slate);overflow:hidden;}
+  .idea-top{display:flex;gap:18px;padding:20px 22px 15px;}
+  .heat{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:6px;width:52px;}
+  .heat .num{font-size:30px;font-weight:700;color:var(--lime);line-height:1;font-variant-numeric:tabular-nums;}
+  .heat .bars{display:flex;gap:2px;}
+  .heat .bars i{width:5px;height:13px;background:var(--line-2);border-radius:1px;}
+  .heat .bars i.on{background:var(--lime);}
+  .heat .lbl{font-size:8.5px;color:var(--faint);letter-spacing:.1em;text-transform:uppercase;}
+  .body{flex:1;min-width:0;}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;}
+  .tag{font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:5px;
+    background:rgba(35,98,152,.22);color:#9dc4e8;border:1px solid rgba(35,98,152,.4);}
+  .tag.fresh{background:rgba(204,255,51,.12);color:var(--lime);border-color:rgba(204,255,51,.35);}
+  .tag.gap{background:rgba(255,255,255,0.05);color:var(--muted);border-color:var(--line-2);}
+  h2{font-size:19px;font-weight:600;color:var(--white);margin:0 0 9px;line-height:1.3;letter-spacing:-0.01em;}
+  .why{font-size:13.5px;color:var(--muted);margin:0;}
+  .why b{color:var(--ink);font-weight:600;}
+  .angle{font-size:13px;color:var(--faint);font-style:italic;margin:9px 0 0;}
+  .sources{display:flex;flex-wrap:wrap;align-items:center;gap:7px 12px;margin:11px 0 0;font-size:12px;}
+  .sources .l{font-size:9.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);}
+  .sources a{color:var(--lime);border-bottom:1px solid rgba(204,255,51,.35);padding-bottom:1px;}
+  .sources .slackref{color:var(--muted);}
+  .actions{display:flex;flex-wrap:wrap;gap:8px;padding:14px 22px 18px;border-top:1px solid var(--line);background:var(--slate-2);}
+  .btn{font-family:var(--font);font-size:12.5px;font-weight:600;border-radius:5px;padding:9px 14px;cursor:pointer;
+    border:none;letter-spacing:.01em;transition:transform .08s,filter .15s,background .15s;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn.primary{background:var(--lime);color:var(--navy);}
+  .btn.ghost{background:transparent;color:var(--white);border:1px solid var(--lime);}
+  .btn.ghost:hover{background:rgba(204,255,51,.10);}
+  .btn.copied{background:#1f7a3f;color:#fff;border-color:#1f7a3f;}
+  footer{position:relative;z-index:1;padding:26px 0 60px;color:var(--faint);font-size:12.5px;border-top:1px solid var(--line);margin-top:12px;}
+  footer b{color:var(--muted);font-weight:600;}
+  #toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);opacity:0;
+    background:var(--lime);color:var(--navy);font-weight:600;font-size:13px;padding:11px 20px;border-radius:8px;
+    transition:opacity .2s,transform .2s;z-index:10;pointer-events:none;box-shadow:0 10px 30px rgba(0,0,0,.4);}
+  #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+  #fallbackPanel{position:fixed;bottom:70px;left:50%;transform:translateX(-50%) translateY(10px);opacity:0;pointer-events:none;
+    background:var(--slate-2);border:1px solid var(--line-2);border-radius:10px;padding:14px 16px;width:min(560px,90vw);
+    box-shadow:0 20px 50px rgba(0,0,0,.5);transition:opacity .2s,transform .2s;z-index:11;}
+  #fallbackPanel.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto;}
+  #fallbackPanel p{margin:0 0 8px;font-size:12px;color:var(--muted);}
+  #fallbackPanel textarea{width:100%;min-height:90px;background:var(--navy-2);color:var(--ink);border:1px solid var(--line-2);
+    border-radius:6px;padding:8px;font-family:var(--font);font-size:12px;resize:vertical;box-sizing:border-box;}
+  /* tabs */
+  .tabs{position:relative;z-index:1;display:flex;gap:4px;max-width:920px;margin:14px auto 0;padding:0 24px;flex-wrap:wrap;}
+  .tab{font-family:var(--font);font-size:13px;font-weight:600;letter-spacing:.01em;color:var(--muted);background:transparent;
+    border:1px solid var(--line);border-radius:9px 9px 0 0;padding:10px 18px;cursor:pointer;transition:color .15s,background .15s,border-color .15s;}
+  .tab:hover{color:var(--ink);}
+  .tab.active{color:var(--navy);background:var(--lime);border-color:var(--lime);}
+  .panel{position:relative;z-index:1;display:none;}
+  .panel.active{display:block;}
+  /* toolkit */
+  .toolkit-intro{font-size:13.5px;color:var(--muted);margin:0 0 20px;max-width:700px;}
+  .toolkit-intro b{color:var(--ink);font-weight:600;}
+  .kit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;}
+  .kit{border:1px solid var(--line);border-radius:14px;background:var(--slate);padding:20px 22px;display:flex;flex-direction:column;}
+  .kit h3{font-size:17px;font-weight:600;color:var(--white);margin:0 0 4px;}
+  .kit .builds{font-size:12.5px;color:var(--faint);margin:0 0 14px;}
+  .kit ul{margin:0 0 16px;padding-left:16px;flex:1;}
+  .kit li{font-size:12.5px;color:var(--muted);margin:0 0 6px;line-height:1.45;}
+  .kit li b{color:var(--ink);font-weight:600;}
+  .kit .dl{align-self:flex-start;display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;
+    background:var(--lime);color:var(--navy);border-radius:5px;padding:10px 16px;text-decoration:none;transition:transform .08s,filter .15s;}
+  .kit .dl:hover{transform:translateY(-1px);filter:brightness(1.05);}
+  .kit .size{font-size:11px;color:var(--faint);margin-top:9px;}
+  .toolkit-note{font-size:12px;color:var(--faint);line-height:1.55;margin:24px 0 0;padding-top:16px;border-top:1px solid var(--line);max-width:740px;}
+  .toolkit-note b{color:var(--muted);font-weight:600;}
+</style>
+
+<div class="bg" aria-hidden="true">
+  <svg width="560" height="560" viewBox="0 0 560 560" fill="none">
+    <g stroke="#25323F" stroke-width="1.5" fill="none" opacity=".8">
+      <circle cx="280" cy="280" r="120"/><circle cx="280" cy="280" r="185"/><circle cx="280" cy="280" r="250"/>
+    </g>
+  </svg>
+</div>
+
+<header>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo" id="logo" alt="Adthena"/>
+      <div class="meta">Content Radar · daily scan<br/>Scanned 10:00 · Mon 27 Jul 2026</div>
+    </div>
+    <p class="eyebrow">Your morning content radar</p>
+    <div class="process">
+      <span class="step"><b>Scrape</b> news, blog, Slack &amp; LinkedIn posts (search)</span>
+      <span class="arrow">&#8594;</span>
+      <span class="step"><b>Idea</b> ranked by relevance, freshness &amp; gap</span>
+      <span class="arrow">&#8594;</span>
+      <span class="step"><b>Generate</b> one-click drafts</span>
+    </div>
+    <h1>5 ideas worth making today</h1>
+    <div class="summary" id="summary"></div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="tab active" data-panel="radar">Today's radar</button>
+  <button class="tab" data-panel="toolkit">Toolkit</button>
+</nav>
+
+<div class="panel active" id="panel-radar">
+  <main class="wrap" id="board"></main>
+</div>
+
+
+<div class="panel" id="panel-toolkit">
+  <section class="wrap">
+    <p class="section-title">Toolkit <span>&mdash; download the skills to build these assets</span></p>
+    <p class="toolkit-intro">The <b>Generate</b> buttons paste a prompt into Claude Code; you need these skills installed to build the asset. Grab the bundle for what you're making, each is self-contained with an install README.</p>
+    <div class="kit-grid">
+      <div class="kit">
+        <h3>Carousel</h3>
+        <p class="builds">Builds: LinkedIn document carousels</p>
+        <ul>
+          <li><b>adthena-linkedin-carousel</b> &mdash; the builder, with real example decks</li>
+          <li><b>adthena-branding</b> &mdash; colours, type, logo, layout</li>
+          <li><b>adthena-brand-positioning</b> &mdash; tone of voice</li>
+          <li><b>adthena-assets</b> &mdash; icon &amp; mockup library</li>
+        </ul>
+        <a class="dl" href="https://github.com/sarahmason-adthena/adthena-content-toolkit/releases/download/v1/adthena-toolkit-carousel.zip" target="_blank" rel="noopener">&#8595; Download bundle</a>
+        <span class="size">~10 MB &middot; .zip</span>
+      </div>
+      <div class="kit">
+        <h3>Video</h3>
+        <p class="builds">Builds: animated videos (LinkedIn 4:5, YouTube Shorts 9:16)</p>
+        <ul>
+          <li><b>adthena-video-trailer</b> &mdash; product trailer / explainer</li>
+          <li><b>adthena-case-study-video</b> &mdash; animated stats video</li>
+          <li><b>adthena-branding</b> &mdash; colours, type, logo, layout</li>
+          <li><b>adthena-assets</b> &mdash; icon &amp; mockup library</li>
+        </ul>
+        <a class="dl" href="https://github.com/sarahmason-adthena/adthena-content-toolkit/releases/download/v1/adthena-toolkit-video.zip" target="_blank" rel="noopener">&#8595; Download bundle</a>
+        <span class="size">~7.8 MB &middot; .zip</span>
+      </div>
+      <div class="kit">
+        <h3>Blog &amp; copy</h3>
+        <p class="builds">Builds: blog posts &amp; long-form copy</p>
+        <ul>
+          <li><b>adthena-brand-positioning</b> &mdash; Adthena voice &amp; messaging</li>
+          <li><b>adthena-branding</b> &mdash; brand system reference</li>
+          <li><b>ai-writing</b> &mdash; writing-quality skill</li>
+          <li><b>humanizer</b> &mdash; strips AI-tells from drafts</li>
+        </ul>
+        <a class="dl" href="https://github.com/sarahmason-adthena/adthena-content-toolkit/releases/download/v1/adthena-toolkit-blog.zip" target="_blank" rel="noopener">&#8595; Download bundle</a>
+        <span class="size">~84 KB &middot; .zip</span>
+      </div>
+    </div>
+    <p class="toolkit-note"><b>Teammates:</b> ask Sarah for access to <a href="https://github.com/sarahmason-adthena/adthena-content-toolkit" target="_blank" rel="noopener">the private repo</a>, then download from <a href="https://github.com/sarahmason-adthena/adthena-content-toolkit/releases/latest" target="_blank" rel="noopener">Releases</a> or clone it into <code>~/.claude/skills/</code>. Skills use an absolute asset-library path; see the repo README to adjust it.</p>
+  </section>
+</div>
+
+<footer class="wrap">
+  <p>Sources: <b>AI-search &amp; PPC news</b>, <b>adthena.com/blog</b>, Slack (<b>#marketing</b>, <b>#product-releases</b>, <b>#google-news</b>) and <b>LinkedIn</b> (via search). Buttons copy a ready-to-run prompt into Claude Code. Drafts only, nothing auto-posts.</p>
+</footer>
+
+<div id="toast">Copied. Paste into Claude Code to generate</div>
+<div id="fallbackPanel">
+  <p>Auto-copy was blocked here &mdash; the text below is selected, press &#8984;/Ctrl+C to copy it manually.</p>
+  <textarea id="fallbackText" readonly></textarea>
+</div>
+
+<script>
+document.getElementById('logo').src="data:image/png;base64,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";
+
+const IDEAS=[
+  {heat:96, tags:[["Fresh today","fresh"],["#marketing","tag"],["Flagship","tag"]],
+   title:"Our AI Search Ads: Advertiser Intelligence Report is live, hard launch is this week",
+   why:"<b>Why now:</b> Serra posted in #marketing (24 Jul) that the report went live on Search Engine Land and has already pulled 57 leads, with the hard launch in full swing today. A full quarter of Q2 data across Google AI Overviews, AI Mode and ChatGPT ads, three surfaces in one report.",
+   angle:"Suggested angle: stat-drop carousel plus a 4:5 video pulling one headline number from each of the three surfaces, posted through launch week.",
+   sources:[["Slack","#marketing","slack"],["AI Ads report","https://www.adthena.com/ai-ads-report/",""],["LinkedIn teaser","https://www.linkedin.com/feed/update/urn:li:activity:7486424386481209344",""]]},
+
+  {heat:93, tags:[["Fresh today","fresh"],["AI search news","tag"],["No blog yet","gap"]],
+   title:"OpenAI just opened a self-serve Ads Manager for ChatGPT",
+   why:"<b>Why now:</b> OpenAI opened \"Advertise in ChatGPT\" on 22 Jul, a self-serve platform for building campaigns and targeting by conversation context. It ties straight to AI Ads Intelligence and AdBridge, which already exports into the OpenAI Ads Manager, and we have no post on the self-serve launch yet.",
+   angle:"Suggested angle: carousel on what changes now anyone can buy ChatGPT ads, and how to see who is already bidding in your market.",
+   sources:[["OpenAI","https://openai.com/index/testing-ads-in-chatgpt/",""],["ExplainX","https://explainx.ai/blog/openai-advertise-in-chatgpt-ads-launch-july-2026",""]]},
+
+  {heat:90, tags:[["Fresh today","fresh"],["#marketing","tag"],["Flagship","tag"]],
+   title:"Our ChatGPT Ad Index is live, first to show UK data",
+   why:"<b>Why now:</b> Mery launched the free ChatGPT Ad Index in #marketing (22 Jul), a public benchmark of how many advertisers run ChatGPT ads and who leads, first to show UK data. Built to drive top of funnel and trial sign ups ahead of the autumn PPC conferences.",
+   angle:"Suggested angle: stat-drop carousel from the index numbers, closing on the free ChatGPT ads trial as the next step.",
+   sources:[["ChatGPT Ad Index","https://www.adthena.com/chatgpt-ad-index/",""],["Slack","#marketing","slack"]]},
+
+  {heat:85, tags:[["AI search news","tag"],["PPC","tag"],["No blog yet","gap"]],
+   title:"Google's new ad terms let its AI generate your targets, ads and destinations",
+   why:"<b>Why now:</b> A revised Google Ads Terms of Service that took effect 1 Jul authorizes Google's automated systems to format, select or generate targets, ads and destinations on the advertiser's behalf. As control shifts to Google's AI, an independent read on the whole market matters more.",
+   angle:"Suggested angle: carousel on what the new terms hand over, and why watching the whole market matters when you can see less inside your own account.",
+   sources:[["Common Thread Co","https://commonthreadco.com/blogs/coachs-corner/google-ads-tos-july-2026-ai-automation-ecommerce",""],["Digital Darzee","https://digitaldarzee.com/google-ads-just-handed-ai-more-control-what-the-july-2026-update-means-for-advertisers/",""]]},
+
+  {heat:82, tags:[["Fresh today","fresh"],["AI search news","tag"],["Educational","tag"]],
+   title:"Google now labels which ads were made with AI",
+   why:"<b>Why now:</b> From 9 Jul Google began adding a \"How this ad was made\" note across Search, YouTube and Discover, showing whether an ad was created or modified with AI. A useful signal for teams tracking how competitors build their creative.",
+   angle:"Suggested angle: short educational carousel on what the AI ad labels show, and how to read competitor creative in a more AI-heavy auction.",
+   sources:[["TechCrunch","https://techcrunch.com/2026/07/09/google-will-now-disclose-which-ads-are-made-with-ai/",""],["Search Engine Land","https://searchengineland.com/google-ai-ad-disclosures-search-youtube-discover-481887",""]]},
+];
+
+const FMTS=[
+  {key:"Generate carousel", cls:"primary", instr:"Use the adthena-linkedin-carousel skill (it pairs with adthena-branding and adthena-brand-positioning) to build a LinkedIn document carousel at 1080x1350: a hook cover, 5-8 slides that build one clear argument with a single stat or insight per slide, and a final follow/CTA slide. Also write the LinkedIn caption (hook first line, one takeaway, soft CTA). Export the slides as PNG, SVG and a combined PDF."},
+  {key:"LinkedIn video (4:5)", cls:"ghost", instr:"Use the Adthena video skill (adthena-case-study-video for a stat-led piece) to build a 4:5, 1080x1350 animated video of about 25-30 seconds: slower pacing, minimal text per beat, kinetic stat reveals on the navy/lime brand stage, closing on a follow CTA. Deliver the animated HTML master, plus an MP4 if the render toolchain is available."},
+  {key:"YouTube Short (9:16)", cls:"ghost", instr:"Use the Adthena video skill to build a 9:16, 1080x1920 vertical Short for YouTube Shorts, Reels and TikTok: the same story recut full-height, slower pacing, one stat per beat, minimal text, closing on a CTA."},
+  {key:"Generate blog", cls:"ghost", instr:"Use adthena-brand-positioning for voice to write a 600-900 word blog draft ready for WordPress: a sharp headline, a hook intro, H2 section headings, a data-backed body that cites the sources, and a closing CTA. Match the tone of existing adthena.com/blog posts."},
+];
+
+function buildPrompt(idea, f){
+  const strip = t => (t||'').replace(/<[^>]+>/g,'').replace(/^Why now:\s*/i,'').replace(/^Suggested angle:\s*/i,'').trim();
+  const why = strip(idea.why);
+  const angle = strip(idea.angle);
+  const webSrc = idea.sources.filter(s=>s[2]!=='slack').map(s=>`- ${s[0]}: ${s[1]}`);
+  const slackSrc = idea.sources.filter(s=>s[2]==='slack').map(s=>`- Internal Slack ${s[1]} — read this channel via the Slack connector for the launch/announcement details`);
+  const sources = webSrc.concat(slackSrc);
+  const lines = [
+    `From the Content Radar — brief for a "${f.key}" asset.`,
+    ``,
+    `TOPIC: ${idea.title}`,
+    `WHY IT MATTERS NOW: ${why}`,
+    `ANGLE TO TAKE: ${angle}`,
+    `AUDIENCE: paid search / PPC managers and marketing leaders.`,
+    ``,
+    `SOURCES — read these first (fetch the URLs, read the Slack channels) so the content is grounded in the real facts, numbers and quotes, not just this summary:`,
+    ...(sources.length ? sources : [`- No external source; base it on the angle above and Adthena's own positioning.`]),
+    ``,
+    `TASK: ${f.instr}`,
+    ``,
+    `RULES:`,
+    `- Apply the adthena-branding skill throughout (navy/lime, Montserrat, logo, our chart style).`,
+    `- Adthena voice: bold, human, US English, sentence case, no em dashes, no jargon or banned words.`,
+    `- Back every stat with its source and date. If you can't verify a number from the sources, leave it out rather than guess.`,
+    `- Hedge emerging-surface claims (for example "where Adthena has coverage").`,
+    `- Produce a DRAFT for review. Do not post anywhere.`,
+  ];
+  return lines.join('\n');
+}
+
+document.getElementById('summary').innerHTML=
+  '<span><b>5</b> ideas</span><span><b>4</b> fresh today</span><span><b>4</b> sources scanned</span><span>Ranked by heat</span>';
+
+const board=document.getElementById('board');
+IDEAS.forEach(idea=>{
+  const on=Math.round(idea.heat/20);
+  const bars=Array.from({length:5},(_,i)=>`<i class="${i<on?'on':''}"></i>`).join('');
+  const tags=idea.tags.map(t=>`<span class="tag ${t[1]==='fresh'?'fresh':t[1]==='gap'?'gap':''}">${t[0]}</span>`).join('');
+  const srcs=idea.sources.map(s=> s[2]==='slack'
+      ? `<span class="slackref">${s[1]} (Slack)</span>`
+      : `<a href="${s[1]}" target="_blank" rel="noopener">${s[0]}</a>`).join('');
+  const card=document.createElement('div');card.className='idea';
+  card.innerHTML=`
+    <div class="idea-top">
+      <div class="heat"><span class="num">${idea.heat}</span><span class="bars">${bars}</span><span class="lbl">heat</span></div>
+      <div class="body">
+        <div class="tags">${tags}</div>
+        <h2>${idea.title}</h2>
+        <p class="why">${idea.why}</p>
+        <p class="angle">${idea.angle}</p>
+        <p class="sources"><span class="l">Sources</span>${srcs}</p>
+      </div>
+    </div>
+    <div class="actions"></div>`;
+  const actions=card.querySelector('.actions');
+  FMTS.forEach(f=>{
+    const b=document.createElement('button');b.className='btn '+f.cls;b.textContent=f.key;
+    const prompt=buildPrompt(idea,f);
+    b.addEventListener('click',async()=>{
+      const ok=await copyText(prompt);
+      const t=b.textContent;
+      if(ok){
+        b.textContent='✓ Copied';b.classList.add('copied');
+        showToast('Copied. Paste into Claude Code to generate');
+      }else{
+        b.textContent='⚠ See below';b.classList.add('copied');
+        showFallback(prompt);
+      }
+      setTimeout(()=>{b.textContent=t;b.classList.remove('copied');},1600);
+    });
+    actions.appendChild(b);
+  });
+  board.appendChild(card);
+});
+
+async function copyText(text){
+  if(navigator.clipboard && window.isSecureContext){
+    try{await navigator.clipboard.writeText(text);return true;}catch(e){}
+  }
+  try{
+    const ta=document.createElement('textarea');
+    ta.value=text;ta.style.position='fixed';ta.style.opacity='0';ta.style.top='0';
+    document.body.appendChild(ta);ta.focus();ta.select();
+    const ok=document.execCommand('copy');
+    document.body.removeChild(ta);
+    if(ok)return true;
+  }catch(e){}
+  return false;
+}
+
+let toastT;
+function showToast(msg){const el=document.getElementById('toast');if(msg)el.textContent=msg;el.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),1800);}
+
+let fallbackT;
+function showFallback(text){
+  const panel=document.getElementById('fallbackPanel');
+  const ta=document.getElementById('fallbackText');
+  ta.value=text;panel.classList.add('show');
+  ta.focus();ta.select();
+  clearTimeout(fallbackT);fallbackT=setTimeout(()=>panel.classList.remove('show'),9000);
+}
+
+const PULSE=[];
+
+const pulseEl=document.getElementById('pulse');
+PULSE.forEach(p=>{
+  const c=document.createElement('div');c.className='pulse-card'+(p.signal?' signal':'');
+  c.innerHTML=`<h3>${p.vertical}</h3><ul>${p.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>`;
+  pulseEl.appendChild(c);
+});
+
+// tab switching
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    const p=t.dataset.panel;
+    document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===t));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id==='panel-'+p));
+  });
+});
+</script>
